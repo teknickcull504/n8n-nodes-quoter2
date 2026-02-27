@@ -29,13 +29,16 @@ exports.quoteFields = [
         description: 'Name of the quote',
     },
     {
-        displayName: 'Template ID',
+        displayName: 'Template',
         name: 'template_id',
-        type: 'string',
+        type: 'options',
         required: true,
         default: '',
+        typeOptions: {
+            loadOptionsMethod: 'getQuoteTemplates',
+        },
         displayOptions: { show: { resource: ['quote'], operation: ['create'] } },
-        description: 'ID of the quote template to use. Use the Quote Template > Get Many operation to find available templates.',
+        description: 'Quote template to use. Choose from the list, or switch to expression mode to specify an ID.',
     },
     {
         displayName: 'Currency',

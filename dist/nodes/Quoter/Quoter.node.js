@@ -78,6 +78,17 @@ class Quoter {
                 ...descriptions_1.supplierFields,
             ],
         };
+        this.methods = {
+            loadOptions: {
+                async getQuoteTemplates() {
+                    const response = await GenericFunctions_1.quoterApiRequestAllItems.call(this, 'GET', '/quote_templates');
+                    return response.map((t) => ({
+                        name: t.name,
+                        value: t.id,
+                    }));
+                },
+            },
+        };
     }
     async execute() {
         const items = this.getInputData();

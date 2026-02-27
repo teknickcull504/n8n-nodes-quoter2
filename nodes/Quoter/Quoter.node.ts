@@ -1,6 +1,8 @@
 import type {
 	IExecuteFunctions,
+	ILoadOptionsFunctions,
 	INodeExecutionData,
+	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
 	IDataObject,
@@ -112,6 +114,18 @@ export class Quoter implements INodeType {
 			...supplierOperations,
 			...supplierFields,
 		],
+	};
+
+	methods = {
+		loadOptions: {
+			async getQuoteTemplates(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+				const response = await quoterApiRequestAllItems.call(this, 'GET', '/quote_templates');
+				return (response as Array<{ id: string; name: string }>).map((t) => ({
+					name: t.name,
+					value: t.id,
+				}));
+			},
+		},
 	};
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
