@@ -495,7 +495,7 @@ class Quoter {
                     if (operation === 'create') {
                         const body = {
                             name: this.getNodeParameter('name', i),
-                            quote_template_id: this.getNodeParameter('quote_template_id', i),
+                            template_id: this.getNodeParameter('template_id', i),
                             currency_abbr: this.getNodeParameter('currency_abbr', i),
                         };
                         Object.assign(body, this.getNodeParameter('additionalFields', i));
