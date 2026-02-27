@@ -81,10 +81,14 @@ class Quoter {
         this.methods = {
             loadOptions: {
                 async getQuoteTemplates() {
-                    const response = await GenericFunctions_1.quoterApiRequestAllItems.call(this, 'GET', '/quote_templates');
-                    return response.map((t) => ({
-                        name: t.name,
-                        value: t.id,
+                    const response = await GenericFunctions_1.quoterApiRequest.call(this, 'GET', '/quote_templates', {}, { limit: 100 });
+                    const templates = response.data || response;
+                    if (!Array.isArray(templates)) {
+                        return [];
+                    }
+                    return templates.map((t) => ({
+                        name: t.name || t.title || t.id || 'Unknown',
+                        value: t.id || '',
                     }));
                 },
             },

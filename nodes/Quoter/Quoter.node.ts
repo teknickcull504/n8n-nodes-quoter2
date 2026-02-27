@@ -119,10 +119,14 @@ export class Quoter implements INodeType {
 	methods = {
 		loadOptions: {
 			async getQuoteTemplates(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-				const response = await quoterApiRequestAllItems.call(this, 'GET', '/quote_templates');
-				return (response as Array<{ id: string; name: string }>).map((t) => ({
-					name: t.name,
-					value: t.id,
+				const response = await quoterApiRequest.call(this, 'GET', '/quote_templates', {}, { limit: 100 });
+				const templates = response.data || response;
+				if (!Array.isArray(templates)) {
+					return [];
+				}
+				return templates.map((t: IDataObject) => ({
+					name: (t.name as string) || (t.title as string) || (t.id as string) || 'Unknown',
+					value: (t.id as string) || '',
 				}));
 			},
 		},
