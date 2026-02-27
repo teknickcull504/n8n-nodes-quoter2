@@ -1,0 +1,14 @@
+{
+	"node": "n8n-nodes-base.quoter",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Sales"],
+	"resources": {
+		"primaryDocumentation": [
+			{
+				"url": "https://quotersoftware.github.io/docs/#quoter-api-reference"
+			}
+		]
+	},
+	"alias": ["quote", "quoter", "quoting", "sales", "proposal"]
+}
