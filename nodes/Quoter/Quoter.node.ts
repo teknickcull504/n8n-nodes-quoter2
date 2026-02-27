@@ -649,6 +649,8 @@ export class Quoter implements INodeType {
 					if (operation === 'create') {
 						const body: IDataObject = {
 							name: this.getNodeParameter('name', i) as string,
+							template_id: this.getNodeParameter('template_id', i) as string,
+							currency_abbr: this.getNodeParameter('currency_abbr', i) as string,
 						};
 						Object.assign(body, this.getNodeParameter('additionalFields', i) as IDataObject);
 						responseData = await quoterApiRequest.call(this, 'POST', '/quotes', body);

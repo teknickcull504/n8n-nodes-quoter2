@@ -480,6 +480,8 @@ class Quoter {
                     if (operation === 'create') {
                         const body = {
                             name: this.getNodeParameter('name', i),
+                            template_id: this.getNodeParameter('template_id', i),
+                            currency_abbr: this.getNodeParameter('currency_abbr', i),
                         };
                         Object.assign(body, this.getNodeParameter('additionalFields', i));
                         responseData = await GenericFunctions_1.quoterApiRequest.call(this, 'POST', '/quotes', body);
