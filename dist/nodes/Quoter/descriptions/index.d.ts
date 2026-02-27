@@ -1,0 +1,14 @@
+export { categoryOperations, categoryFields } from './CategoryDescription';
+export { contactOperations, contactFieldDefinitions } from './ContactDescription';
+export { dataFeedOperations, dataFeedFields } from './DataFeedDescription';
+export { itemOperations, itemFields } from './ItemDescription';
+export { itemGroupOperations, itemGroupFields } from './ItemGroupDescription';
+export { itemGroupItemAssignmentOperations, itemGroupItemAssignmentFields } from './ItemGroupItemAssignmentDescription';
+export { itemOptionOperations, itemOptionFields } from './ItemOptionDescription';
+export { itemOptionValueOperations, itemOptionValueFields } from './ItemOptionValueDescription';
+export { itemTierOperations, itemTierFields } from './ItemTierDescription';
+export { lineItemOperations, lineItemFields } from './LineItemDescription';
+export { manufacturerOperations, manufacturerFields } from './ManufacturerDescription';
+export { quoteOperations, quoteFields } from './QuoteDescription';
+export { quoteTemplateOperations, quoteTemplateFields } from './QuoteTemplateDescription';
+export { supplierOperations, supplierFields } from './SupplierDescription';
