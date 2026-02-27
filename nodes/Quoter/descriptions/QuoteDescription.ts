@@ -30,7 +30,7 @@ export const quoteFields: INodeProperties[] = [
 	},
 	{
 		displayName: 'Template',
-		name: 'template_id',
+		name: 'quote_template_id',
 		type: 'options',
 		required: true,
 		default: '',

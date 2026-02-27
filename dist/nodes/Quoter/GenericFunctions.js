@@ -83,19 +83,27 @@ async function quoterApiRequest(method, endpoint, body = {}, qs = {}) {
 async function quoterApiRequestAllItems(method, endpoint, body = {}, qs = {}) {
     const allItems = [];
     let page = 1;
-    qs.limit = qs.limit || 100;
+    const limit = qs.limit || 100;
+    qs.limit = limit;
     let hasMore = true;
     while (hasMore) {
         qs.page = page;
         const response = await quoterApiRequest.call(this, method, endpoint, body, qs);
+        let items = [];
         if (Array.isArray(response.data)) {
-            allItems.push(...response.data);
+            items = response.data;
         }
         else if (Array.isArray(response)) {
-            allItems.push(...response);
+            items = response;
         }
-        hasMore = response.has_more === true;
-        page++;
+        allItems.push(...items);
+        // Stop if: API says no more, returned fewer items than limit, or no items returned
+        if (response.has_more === false || items.length < limit || items.length === 0) {
+            hasMore = false;
+        }
+        else {
+            page++;
+        }
     }
     return allItems;
 }
